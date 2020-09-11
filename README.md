@@ -35,6 +35,7 @@
 - belongs_to :user
 - belongs_to :delivery_information
 - belongs_to :shipping _address
+- belongs_to :purchase
 
 ## Delivery_information テーブル
 
