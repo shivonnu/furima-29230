@@ -52,7 +52,7 @@
 - has_many   :products
 - belongs_to :purchase
 
-## Purchase テーブル
+## Purchasesテーブル
 
 | column               | Type    | Options                        |
 |----------------------|---------|--------------------------------|
