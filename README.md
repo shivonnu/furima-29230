@@ -11,7 +11,6 @@
 | first_name      | string | null: false |
 | last_name_kana  | string | null: false |
 | fast_name_kana  | string | null: false |
-| name_katakana   | string | null: false |
 | birthday        | date   | null: false |
 
 
