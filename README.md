@@ -12,9 +12,8 @@
 | last_name_kana  | string | null: false |
 | fast_name_kana  | string | null: false |
 | name_katakana   | string | null: false |
-| birthday_year   | date   | null: false |
-| birthday_month  | date   | null: false |
-| birthday_day    | date   | null: false |
+| birthday        | date   | null: false |
+
 
 ### Association
 
