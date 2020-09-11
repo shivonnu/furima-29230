@@ -62,8 +62,6 @@
 | address              | string  | null: false                    |
 | building_name        | string  | null: false                    |
 | phone_number         | integer |                                |
-| users_id             | integer | null: false, foreign_key: true |
-| products_id          | integer | null: false, foreign_key: true |
 
 ### Association
 
