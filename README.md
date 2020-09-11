@@ -25,7 +25,6 @@
 | column               | Type    | Options                        |
 |----------------------|---------|--------------------------------|
 | product_name         | string  | null: false                    |
-| exhibition_image     | string  | null: false                    |
 | category             | string  | null: false                    |
 | product_description  | integer | null: false                    |
 | product_status       | integer | null: false                    |
