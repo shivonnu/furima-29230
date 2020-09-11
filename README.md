@@ -28,7 +28,7 @@
 | category             | integer | null: false                    |
 | status               | integer | null: false                    |
 | price                | integer | null: false                    |
-| users_id             | integer | null: false, foreign_key: true |
+| user_id              | integer | null: false, foreign_key: true |
 
 ### Association
 
@@ -56,8 +56,8 @@
 
 | column                | Type    | Options                        |
 |-----------------------|---------|--------------------------------|
-| users_id              | integer | null: false, foreign_key: true |
-| products_id           | integer | null: false, foreign_key: true |
+| user_id               | integer | null: false, foreign_key: true |
+| product_id            | integer | null: false, foreign_key: true |
 | shipping_address_id   | integer | null: false, foreign_key: true |
 
 ### Association
