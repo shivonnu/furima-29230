@@ -24,8 +24,8 @@
 | column               | Type    | Options                        |
 |----------------------|---------|--------------------------------|
 | product_name         | string  | null: false                    |
-| category             | string  | null: false                    |
 | product_description  | text    | null: false                    |
+| category             | string  | null: false                    |
 | product_status       | integer | null: false                    |
 | price                | integer | null: false                    |
 | users_id             | integer | null: false, foreign_key: true |
