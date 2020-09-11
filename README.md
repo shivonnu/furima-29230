@@ -36,7 +36,7 @@
 - belongs_to :shipping _address
 - belongs_to :purchase
 
-## Shipping_address テーブル
+## Shipping_addresses テーブル
 
 | column               | Type    | Options                        |
 |----------------------|---------|--------------------------------|
