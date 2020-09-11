@@ -25,7 +25,7 @@
 |----------------------|---------|--------------------------------|
 | name                 | string  | null: false                    |
 | description          | text    | null: false                    |
-| category             | string  | null: false                    |
+| category             | integer | null: false                    |
 | status               | integer | null: false                    |
 | price                | integer | null: false                    |
 | users_id             | integer | null: false, foreign_key: true |
