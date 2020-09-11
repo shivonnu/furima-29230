@@ -33,7 +33,7 @@
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - belongs_to :delivery_information
 - belongs_to :shipping _address
 
@@ -48,7 +48,7 @@
 
 ### Association
 
-- belongs_to :products
+- belongs_to :product
 - belongs_to :shipping_address
 
 ## Shipping_address テーブル
@@ -84,6 +84,6 @@
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 
 
