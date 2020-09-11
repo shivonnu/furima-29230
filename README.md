@@ -81,5 +81,7 @@
 ### Association
 
 - belongs_to :user
+- has_many   :products
+- belongs_to :shipping_address
 
 
