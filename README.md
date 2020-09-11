@@ -55,7 +55,7 @@
 
 | column               | Type    | Options                        |
 |----------------------|---------|--------------------------------|
-| postal_code          | integer |                                |
+| postal_code          | string  | null: false                    |
 | expiration_date      | integer | null: false                    |
 | prefectures          | integer | null: false                    |
 | city                 | string  | null: false                    |
