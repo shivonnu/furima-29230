@@ -33,23 +33,8 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :delivery_information
 - belongs_to :shipping _address
 - belongs_to :purchase
-
-## Delivery_information テーブル
-
-| column               | Type    | Options                        |
-|----------------------|---------|--------------------------------|
-| shipping_area        | integer | null: false                    |
-| shipping_fee_burden  | integer | null: false                    |
-| days_to_ship         | integer | null: false                    |
-| products_id          | integer | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :product
-- belongs_to :shipping_address
 
 ## Shipping_address テーブル
 
@@ -65,7 +50,6 @@
 ### Association
 
 - has_many   :products
-- belongs_to :delivery_information
 - belongs_to :purchase
 
 ## Purchase テーブル
