@@ -57,7 +57,7 @@
 |----------------------|---------|--------------------------------|
 | postal_code          | integer |                                |
 | expiration_date      | integer | null: false                    |
-| prefectures          | string  | null: false                    |
+| prefectures          | integer | null: false                    |
 | city                 | string  | null: false                    |
 | address              | string  | null: false                    |
 | building_name        | string  |                                |
