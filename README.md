@@ -75,10 +75,6 @@
 
 | column               | Type    | Options                        |
 |----------------------|---------|--------------------------------|
-| credit_card_id       | integer | null: false                    |
-| expiation_date_month | integer | null: false                    |
-| expiation_date_year  | integer | null: false                    |
-| security_code        | integer | null: false                    |
 | users_id             | integer | null: false, foreign_key: true |
 | products_id          | integer | null: false, foreign_key: true |
 
