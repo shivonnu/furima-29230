@@ -17,7 +17,7 @@
 ### Association
 
 - has_many   :products
-- belongs_to :purchase
+- has_many   :purchases
 
 ## Products テーブル
 
