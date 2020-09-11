@@ -54,10 +54,11 @@
 
 ## Purchasesテーブル
 
-| column               | Type    | Options                        |
-|----------------------|---------|--------------------------------|
-| users_id             | integer | null: false, foreign_key: true |
-| products_id          | integer | null: false, foreign_key: true |
+| column                | Type    | Options                        |
+|-----------------------|---------|--------------------------------|
+| users_id              | integer | null: false, foreign_key: true |
+| products_id           | integer | null: false, foreign_key: true |
+| shipping_address_id   | integer | null: false, foreign_key: true |
 
 ### Association
 
