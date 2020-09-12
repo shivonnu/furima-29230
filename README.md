@@ -21,17 +21,17 @@
 
 ## Items テーブル
 
-| column               | Type    | Options                        |
-|----------------------|---------|--------------------------------|
-| name                 | string  | null: false                    |
-| description          | text    | null: false                    |
-| category             | integer | null: false                    |
-| status               | integer | null: false                    |
-| price                | integer | null: false                    |
-| shipping_area        | integer | null: false                    |
-| shipping_fee_burden  | integer | null: false                    |
-| days_to_ship         | integer | null: false                    |
-| user_id              | integer | null: false, foreign_key: true |
+| column               | Type    | Options                                      |
+|----------------------|---------|----------------------------------------------|
+| name                 | string  | null: false                                  |
+| description          | text    | null: false                                  |
+| category             | integer | null: false                                  |
+| status               | integer | null: false                                  |
+| price                | integer | null: false                                  |
+| shipping_area        | integer | null: false                                  |
+| shipping_fee_burden  | integer | null: false                                  |
+| days_to_ship         | integer | null: false                                  |
+| user_id              | integer | null: false, add_foreign_key: :items, :users |
 
 ### Association
 
@@ -55,10 +55,10 @@
 
 ## Purchasesテーブル
 
-| column                | Type    | Options                        |
-|-----------------------|---------|--------------------------------|
-| user_id               | integer | null: false, foreign_key: true |
-| item_id               | integer | null: false, foreign_key: true |
+| column                | Type    | Options                                          |
+|-----------------------|---------|--------------------------------------------------|
+| user_id               | integer | null: false, add_foreign_key: :purchases, :users |
+| item_id               | integer | null: false, add_foreign_key: :purchases, :items |
 
 ### Association
 
