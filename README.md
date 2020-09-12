@@ -36,7 +36,6 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :shipping _address
 - has_one    :purchases
 
 ## Shipping_addresses テーブル
@@ -52,7 +51,6 @@
 
 ### Association
 
-- has_many   :products
 - belongs_to :purchase
 
 ## Purchasesテーブル
