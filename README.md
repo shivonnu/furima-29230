@@ -37,7 +37,7 @@
 
 - belongs_to :user
 - belongs_to :shipping _address
-- belongs_to :purchase
+- has_one    :purchases
 
 ## Shipping_addresses テーブル
 
