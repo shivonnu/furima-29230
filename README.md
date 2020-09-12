@@ -28,10 +28,10 @@
 | category             | integer | null: false                    |
 | status               | integer | null: false                    |
 | price                | integer | null: false                    |
-| user_id              | integer | null: false, foreign_key: true |
 | shipping_area        | integer | null: false                    |
 | shipping_fee_burden  | integer | null: false                    |
 | days_to_ship         | integer | null: false                    |
+| user_id              | integer | null: false, foreign_key: true |
 
 ### Association
 
