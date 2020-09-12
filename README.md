@@ -59,7 +59,6 @@
 |-----------------------|---------|--------------------------------|
 | user_id               | integer | null: false, foreign_key: true |
 | product_id            | integer | null: false, foreign_key: true |
-| shipping_address_id   | integer | null: false, foreign_key: true |
 
 ### Association
 
