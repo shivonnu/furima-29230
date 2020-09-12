@@ -16,10 +16,10 @@
 
 ### Association
 
-- has_many   :products
+- has_many   :items
 - has_many   :purchases
 
-## Products テーブル
+## Items テーブル
 
 | column               | Type    | Options                        |
 |----------------------|---------|--------------------------------|
@@ -58,12 +58,12 @@
 | column                | Type    | Options                        |
 |-----------------------|---------|--------------------------------|
 | user_id               | integer | null: false, foreign_key: true |
-| product_id            | integer | null: false, foreign_key: true |
+| item_id               | integer | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :product
-- belongs_to :shipping_address
+- belongs_to :item
+- has_one    :shipping_address
 
 
