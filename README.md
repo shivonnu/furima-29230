@@ -31,7 +31,7 @@
 | shipping_area        | integer | null: false                                  |
 | shipping_fee_burden  | integer | null: false                                  |
 | days_to_ship         | integer | null: false                                  |
-| user_id              | integer | null: false, add_foreign_key: :items, :users |
+| user_id              | integer | null: false, foreign_key: :true              |
 
 ### Association
 
@@ -49,16 +49,17 @@
 | building_name        | string  |                                |
 | phone_number         | string  | null: false                    |
 
+
 ### Association
 
 - belongs_to :purchase
 
 ## Purchasesテーブル
 
-| column                | Type    | Options                                          |
-|-----------------------|---------|--------------------------------------------------|
-| user_id               | integer | null: false, add_foreign_key: :purchases, :users |
-| item_id               | integer | null: false, add_foreign_key: :purchases, :items |
+| column                | Type    | Options                         |
+|-----------------------|---------|---------------------------------|
+| user_id               | integer | null: false, foreign_key: :true |
+| item_id               | integer | null: false, foreign_key: :true |
 
 ### Association
 
