@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   belongs_to :user
   has_one    :purchase
   has_one_attached :image
@@ -8,10 +9,10 @@ class Item < ApplicationRecord
   def image_presence
     if image.attached?
       if !image.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:image, 'にはjpegまたはpngファイルを添付してください')
+        errors.add(:image, 'Please attach a jpeg or png file')
       end
     else
-      errors.add(:image, 'ファイルを添付してください')
+      errors.add(:image, 'Please attach the file')
     end
   end
   validates :name, presence: true
