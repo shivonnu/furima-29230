@@ -6,7 +6,10 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
     end
     describe '商品出品機能' do
-      
+
+      it "すべての情報が正しいフォーマットで入力されていれば出品登録できること" do
+        expect(@item).to be_valid
+      end
       it "商品名が空では登録出来ないこと" do
         @item.name = ""
         @item.valid?
