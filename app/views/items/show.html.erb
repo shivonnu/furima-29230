@@ -4,10 +4,10 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @show.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag item.image, class: 'item-box-img' if item.image.attached? %>
+      <%= image_tag @show.image, class: 'item-box-img' if @show.image.attached? %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        ¥ <%= @show.price %>
       </span>
       <span class="item-postage">
         (税込) 送料込み
@@ -37,7 +37,7 @@
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @show.description %></span>
     </div>
     <table class="detail-table">
       <tbody>
