@@ -3,12 +3,12 @@ FactoryBot.define do
     association :user
     name                  {Faker::Restaurant.name}
     description           {Faker::Restaurant.description}
-    category              {"1"}
-    status                {"1"}
+    category_id              {"1"}
+    status_id                {"1"}
     price                 {"1000"}
-    shipping_area         {"1"}
-    shipping_fee_burden   {"1"}
-    days_to_ship          {"1"}
+    shipping_area_id         {"1"}
+    shipping_fee_burden_id   {"1"}
+    days_to_ship_id          {"1"}
    
     
           
