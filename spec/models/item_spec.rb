@@ -16,27 +16,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
       it "カテゴリーの情報が必須であること" do
-        @item.category = "0"
+        @item.category_id = "0"
         @item.valid?
         expect(@item.errors.full_messages).to include("Category is not included in the list")
       end
       it "商品の状態についての情報が必須であること" do
-        @item.status = "0"
+        @item.status_id = "0"
         @item.valid?
         expect(@item.errors.full_messages).to include("Status is not included in the list")
       end
       it "配送料の負担についての情報が必須であること" do
-        @item.shipping_fee_burden = "0"
+        @item.shipping_fee_burden_id = "0"
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee burden is not included in the list")
       end
       it "発送元の地域についての情報が必須であること" do
-        @item.shipping_area = "0"
+        @item.shipping_area_id = "0"
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping area is not included in the list")
       end
       it "発送までの日数についての情報が必須であること" do
-        @item.days_to_ship = "0"
+        @item.days_to_ship_id = "0"
         @item.valid?
         expect(@item.errors.full_messages).to include("Days to ship is not included in the list")
       end
@@ -63,6 +63,3 @@ RSpec.describe Item, type: :model do
     end
   end
 end
-
-
-#ログインしているユーザーだけが、出品ページへ遷移できること

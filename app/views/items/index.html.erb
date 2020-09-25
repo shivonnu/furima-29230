@@ -122,7 +122,7 @@
       
           <div class='item-img-content'>
             <% if set.image.attached? %>
-              <%= image_tag set.image, class: "item-img" %>
+              <%=link_to image_tag(set.image, class: "item-img"), item_path(set.id)%>
             <%end%>
             
               <%# 商品が売れていればsold outを表示しましょう %>

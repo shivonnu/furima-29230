@@ -1,9 +1,13 @@
 class Item < ApplicationRecord
-
-  belongs_to :user
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+  belongs_to_active_hash :days_to_ship
+  belongs_to_active_hash :shipping_area
+  belongs_to_active_hash :shipping_fee_burden
+  belongs_to_active_hash :status
   has_one    :purchase
   has_one_attached :image
-
+  belongs_to :user
   validate :image_presence
 
   def image_presence
@@ -16,11 +20,11 @@ class Item < ApplicationRecord
     end
   end
   validates :name, presence: true
-  validates :category, inclusion: { in: 1..10 }
-  validates :status, inclusion: { in: 1..6 }
-  validates :shipping_fee_burden, inclusion: { in: 1..2 }
-  validates :shipping_area, inclusion: { in: 1..47 }
-  validates :days_to_ship, inclusion: { in: 1..3 }
+  validates :category_id, inclusion: { in: 1..10 }
+  validates :status_id, inclusion: { in: 1..6 }
+  validates :shipping_fee_burden_id, inclusion: { in: 1..2 }
+  validates :shipping_area_id, inclusion: { in: 1..47 }
+  validates :days_to_ship_id, inclusion: { in: 1..3 }
   with_options presence: true do
     validates :price, format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters."}
   end

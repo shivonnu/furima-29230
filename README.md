@@ -21,17 +21,17 @@
 
 ## Items テーブル
 
-| column               | Type    | Options                                      |
-|----------------------|---------|----------------------------------------------|
-| name                 | string  | null: false                                  |
-| description          | text    | null: false                                  |
-| category             | integer | null: false                                  |
-| status               | integer | null: false                                  |
-| price                | integer | null: false                                  |
-| shipping_area        | integer | null: false                                  |
-| shipping_fee_burden  | integer | null: false                                  |
-| days_to_ship         | integer | null: false                                  |
-| user_id              | integer | null: false, foreign_key: :true              |
+| column                  | Type    | Options                                      |
+|-------------------------|---------|----------------------------------------------|
+| name                    | string  | null: false                                  |
+| description             | text    | null: false                                  |
+| category_id             | integer | null: false                                  |
+| status_id               | integer | null: false                                  |
+| price_id                | integer | null: false                                  |
+| shipping_area_id        | integer | null: false                                  |
+| shipping_fee_burden_id  | integer | null: false                                  |
+| days_to_ship_id         | integer | null: false                                  |
+| user_id                 | integer | null: false, foreign_key: :true              |
 
 ### Association
 
