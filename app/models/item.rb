@@ -20,6 +20,7 @@ class Item < ApplicationRecord
     end
   end
   validates :name, presence: true
+  validates :description, presence: true
   validates :category_id, inclusion: { in: 1..10 }
   validates :status_id, inclusion: { in: 1..6 }
   validates :shipping_fee_burden_id, inclusion: { in: 1..2 }
