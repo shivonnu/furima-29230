@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+  
   def destroy
     if @item.delete
       redirect_to root_path
