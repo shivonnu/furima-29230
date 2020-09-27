@@ -1,7 +1,10 @@
 class PurchasesController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :create]
 
   def show
+  end
+
+  def create
   end
  
   private
