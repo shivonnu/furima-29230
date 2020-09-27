@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :items do
     resources :purchases
+  end
     # collection do
     #   get 'done', to: 'purchases#done'
     #   post 'pay', to: 'purchases#pay'
     # end
-  end
+  
   resources :shipping_addresses
   root to: "items#index"
   
