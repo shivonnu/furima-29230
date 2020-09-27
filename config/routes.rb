@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :items 
+  resources :items do
+    resources :purchases
+    # collection do
+    #   get 'done', to: 'purchases#done'
+    #   post 'pay', to: 'purchases#pay'
+    # end
+  end
   resources :shipping_addresses
-  resources :purchases
   root to: "items#index"
-  get 'phrchases', to: 'phrchases#show'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
