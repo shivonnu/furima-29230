@@ -1,7 +1,13 @@
 class PurchasesController < ApplicationController
-  
+  before_action :set_item, only: [:show]
+
   def show
-    @item = Item.find_by(id: params[:id])
   end
  
+  private
+
+  def set_item
+    @item = Item.find_by(id: params[:id])
+  end
+
 end
