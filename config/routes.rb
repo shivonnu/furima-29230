@@ -3,11 +3,6 @@ Rails.application.routes.draw do
   resources :items do
     resources :purchases
   end
-    # collection do
-    #   get 'done', to: 'purchases#done'
-    #   post 'pay', to: 'purchases#pay'
-    # end
-  
   resources :shipping_addresses
   root to: "items#index"
   
