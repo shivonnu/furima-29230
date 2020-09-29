@@ -5,11 +5,12 @@ class PurchasesController < ApplicationController
     
  end
   def create
-binding.pry
+
      @purchase = PurchaseShippingAddress.new(purchase_params)
     if 
       @purchase.valid?
       pay_item
+   
       @purchase.save
       return redirect_to root_path
     else
