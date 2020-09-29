@@ -28,8 +28,8 @@
       </p>
     </div>
 
-    <%= form_with model: @purchase, url: item_purchases_path,  id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
-    <%= render 'shared/error_messages', model: @purchases %> 
+    <%= form_with model: @purchase,  url: item_purchases_path,  id: "charge-form", class: 'transaction-form-wrap',local: true do |f| %>
+    <%= render 'shared/error_messages', model: @purchase %> 
   
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
