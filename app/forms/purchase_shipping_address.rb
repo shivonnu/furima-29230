@@ -1,7 +1,7 @@
 class PurchaseShippingAddress
 
   include ActiveModel::Model
-  attr_accessor  :postal_code, :shipping_area_id, :city, :address, :building_name, :phone_number, :item_id, :user_id, :token
+  attr_accessor  :postal_code, :shipping_area_id, :city, :address, :building_name, :phone_number, :item_id, :user_id, :token, :purchase_id, :id, :created_at, :updated_at
 
   validates  :postal_code,      presence: true
   validates  :shipping_area_id, presence: true

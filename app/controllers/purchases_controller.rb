@@ -2,13 +2,13 @@ class PurchasesController < ApplicationController
   attr_accessor  :token
   before_action :set_item, only: [:index, :create]
  def index
-  
+     @purchases = PurchaseShippingAddress.new
  end
   def create
-    @purchase = PurchaseShippingAddress.new(purchase_params)
-
-    if @purchase.valid?
-      binding.pry
+    binding.pry
+     @purchase = PurchaseShippingAddress.new(purchase_params)
+    if 
+      @purchase.valid?
       pay_item
       @purchase.save
       return redirect_to root_path
@@ -23,21 +23,16 @@ class PurchasesController < ApplicationController
     @item = Item.find_by(id: params[:item_id])
   end
 
-  def order_params
-    params.permit(:token)
-  end
-
   def purchase_params
-    params.permit(:token, :postal_code, :shipping_area_id, :city, :address, :building_name, :phone_number, :item_id ).merge(user_id: current_user.id)
-
+    params.permit(:postal_code, :shipping_area_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: @item[:id], token: params[:token])
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_0e474b323702bfe62df227ed"  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: @item.price,  # 商品の値段
-      card: purchase_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類(日本円)
+      amount: @item.price, 
+      card: purchase_params[:token],
+      currency:'jpy'
     )
   end
 end
