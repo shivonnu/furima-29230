@@ -1,19 +1,25 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
  
   def index
      @purchase = PurchaseShippingAddress.new
-
+     @purchases = Purchase.all
+     if    current_user.id == @item.user_id
+           redirect_to root_path
+     elsif @purchases.where(item_id: @item.id).present?
+           redirect_to root_path
+     end
  end
+
   def create
      @purchase = PurchaseShippingAddress.new(purchase_params)
-    if 
-      @purchase.valid?
-      pay_item
-      @purchase.save
-      return redirect_to root_path
+    if @purchase.valid?
+       pay_item
+       @purchase.save
+       return redirect_to root_path
     else
-      render 'index'
+       render 'index'
     end
   end
 
