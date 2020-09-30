@@ -1,15 +1,18 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :set_item, only: [:edit, :show, :update, :destroy]
-  def index
-    @items = Item.includes(:user).all.order("created_at DESC")
-  end
+  before_action :set_item, only: [:edit, :show, :update, :destroy, :index]
   
+  def index
+    @items = Item.includes(:user).all.order("created_at DESC")   
+    @purchase = Purchase.all
+  end
+
   def new
     @item = Item.new
   end
 
   def show
+    @purchase = Purchase.all
   end
  
   def create
@@ -46,7 +49,6 @@ class ItemsController < ApplicationController
       render :show
     end
   end
-
   private
   
   def item_params

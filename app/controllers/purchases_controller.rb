@@ -1,25 +1,23 @@
 class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create]
- def index
+ 
+  def index
      @purchase = PurchaseShippingAddress.new
-    
+
  end
   def create
-
      @purchase = PurchaseShippingAddress.new(purchase_params)
     if 
       @purchase.valid?
       pay_item
-   
       @purchase.save
       return redirect_to root_path
     else
       render 'index'
     end
   end
- 
-  private
 
+  private
   def set_item
     @item = Item.find_by(id: params[:item_id])
   end
