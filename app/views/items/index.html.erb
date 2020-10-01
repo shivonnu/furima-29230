@@ -125,7 +125,7 @@
               <%=link_to image_tag(set.image, class: "item-img"), item_path(set.id)%>
             <%end%>
              
-       <% if @purchase.where(item_id: set.id).present?  %>
+       <% if Purchase.where(item_id: set.id).present?  %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>  

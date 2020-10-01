@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.includes(:user).all.order("created_at DESC")   
-    @purchase = Purchase.all
   end
 
   def new
@@ -12,7 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @purchase = Purchase.all
   end
  
   def create
