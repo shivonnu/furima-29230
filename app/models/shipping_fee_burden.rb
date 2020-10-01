@@ -1,4 +1,3 @@
-
 class ShippingFeeBurden < ActiveHash::Base
 
   self.data = [

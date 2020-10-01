@@ -11,7 +11,6 @@ class PurchaseShippingAddress
   with_options presence: true do
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)."}
     validates :phone_number, format: {with: /\A[0-9]{9,11}\z/, message: "is invalid. Within 11 digits. Do not put hyphens."}
-
   end
  
   def save

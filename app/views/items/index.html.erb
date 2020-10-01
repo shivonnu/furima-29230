@@ -125,14 +125,10 @@
               <%=link_to image_tag(set.image, class: "item-img"), item_path(set.id)%>
             <%end%>
              
-       <% if @purchase.where(item_id: set.id).present?  %> 
-            
-              <%# 商品が売れていればsold outを表示しましょう %>
+       <% if @purchase.where(item_id: set.id).present?  %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
-              </div>
-              <%# //商品が売れていればsold outを表示しましょう %>
-            
+              </div>  
             <%end%>
               <div class='item-info'>
                 <h3 class='item-name'>

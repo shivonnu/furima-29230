@@ -15,6 +15,11 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       @purchase_shipping_address.valid?
       expect(@purchase_shipping_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-).")
     end
+    it 'postal_codeにハイフン(-)が無いと保存できないこと' do
+      @purchase_shipping_address.postal_code = "1234567"
+      @purchase_shipping_address.valid?
+      expect(@purchase_shipping_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-).")
+    end
     it 'shipping_area_idが空だと保存できないこと' do
       @purchase_shipping_address.shipping_area_id = ""
       @purchase_shipping_address.valid?
