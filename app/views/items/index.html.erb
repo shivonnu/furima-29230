@@ -124,19 +124,18 @@
             <% if set.image.attached? %>
               <%=link_to image_tag(set.image, class: "item-img"), item_path(set.id)%>
             <%end%>
-            
-              <%# 商品が売れていればsold outを表示しましょう %>
+             
+       <% if Purchase.where(item_id: set.id).present?  %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
-              </div>
-              <%# //商品が売れていればsold outを表示しましょう %>
-
+              </div>  
+            <%end%>
               <div class='item-info'>
                 <h3 class='item-name'>
                   <%= set.name %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= set.price%>円<br>(税込み)</span>
+                  <span><%=set.price %>円<br>(税込み)</span>
                   <div class='star-btn'>
                     <%= image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
