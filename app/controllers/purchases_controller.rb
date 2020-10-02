@@ -6,9 +6,9 @@ class PurchasesController < ApplicationController
      @purchase = PurchaseShippingAddress.new
      if    current_user.id == @item.user_id
            redirect_to root_path
-    　elsif Purchase.where(item_id: @item.id).present?
-     　     redirect_to root_path
-   　 end
+     elsif Purchase.where(item_id: @item.id).present?
+           redirect_to root_path
+     end
  end
 
   def create
