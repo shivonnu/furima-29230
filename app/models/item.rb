@@ -6,17 +6,14 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_fee_burden
   belongs_to_active_hash :status
   has_one    :purchase
-  has_one_attached :image
+  has_many_attached :images
   belongs_to :user
   validate :image_presence
 
   def image_presence
-    if image.attached?
-      if !image.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:image, 'Please attach a jpeg or png file')
-      end
+    if images.attached?
     else
-      errors.add(:image, 'Please attach the file')
+      errors.add(:images, 'Please attach the file')
     end
   end
  

@@ -1,4 +1,4 @@
-
+if (document.URL.match( /new/ ) ) {
 function price(){
    const priceInput = document.getElementById("item-price");
    const add_tax = document.getElementById("add-tax-price");
@@ -18,6 +18,7 @@ function price(){
        profit.textContent = gains;
      }
    });
-  
+
   }
   window.addEventListener('DOMContentLoaded', price);
+}

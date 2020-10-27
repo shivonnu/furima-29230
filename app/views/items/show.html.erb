@@ -6,7 +6,10 @@
       <%= @item.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @item.image, class: 'item-box-img' if @item.image.attached? %>
+    <% @item.images.each do |image| %>
+     <%= image_tag(image, class: 'item-box-img') %>
+      <% end %>
+      
      <% if  Purchase.where(item_id: @item.id).present? %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
