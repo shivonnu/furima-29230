@@ -1,4 +1,4 @@
-if (document.URL.match( /new/ ) || document.URL.match( /edit/ ) || document.URL.match( /index/ )) {
+if (document.URL.match( /new/ ) || document.URL.match( /edit/ ) ||  document.URL.match( /show/ ) || document.URL.match( /index/ )) {
   document.addEventListener('DOMContentLoaded', function() {
     const ImageList = document.getElementById('image-list')
 
@@ -12,11 +12,14 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ ) || document.URL.
       // 表示する画像を生成
       const blobImage = document.createElement('img')
       blobImage.setAttribute('src', blob)
-
+      blobImage.setAttribute('height', 100)
+      blobImage.setAttribute('width', 100)
+     
+      
       // ファイル選択ボタンを生成
       const inputHTML = document.createElement('input')
-      inputHTML.setAttribute('id', `message_image_${imageElementNum}`)
-      inputHTML.setAttribute('name', 'message[images][]')
+      inputHTML.setAttribute('id', `item_image_${imageElementNum}`)
+      inputHTML.setAttribute('name', 'item[images][]')
       inputHTML.setAttribute('type', 'file')
 
       // 生成したHTMLの要素をブラウザに表示させる
