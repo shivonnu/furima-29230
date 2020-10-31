@@ -13,7 +13,8 @@ class PurchasesController < ApplicationController
 
   def create
      @purchase = PurchaseShippingAddress.new(purchase_params)
-    if @purchase.valid?
+     binding.pry
+     if @purchase.valid?
        pay_item
        @purchase.save
        return redirect_to root_path
