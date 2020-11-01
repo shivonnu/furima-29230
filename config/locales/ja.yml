@@ -1,0 +1,35 @@
+ja:
+  activerecord:
+    models: 
+      item: "商品"
+      user: "ユーザー"
+    attributes:
+      item:
+        price: 値段
+        name: 名前
+        category_id: カテゴリー
+        status_id: 商品の状態
+        shipping_fee_burden_id: 配送料の負担
+        shipping_area_id: 発送元の地域
+        days_to_ship_id: 発送までの日数
+        images: 画像
+        description: 商品の説明
+      user:
+        last_name: 苗字
+        first_name: 名前
+        last_name_kana: 苗字(かな)
+        first_name_kana: 名前(かな)
+        nickname: ニックネーム
+        birthday: 誕生日
+  activemodel:
+    models: 
+      purchase_shipping_address: "購入"
+    attributes:
+      purchase_shipping_address:
+        postal_code: 郵便番号
+        phone_number: 電話番号
+        city: 市
+        address: 住所
+        token: 有効なカード番号情報
+        building_name: 建物名
+        shipping_area_id: 都道府県名
