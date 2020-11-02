@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :price, format: {with: /\A[0-9]+\z/, message: "が空です 半角で入力してください"}
     validates :name, :description
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "が上限を超えています"}
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "が設定可能範囲を超えています"}
     validates :category_id, inclusion: { in: 1..10 }
     validates :status_id, inclusion: { in: 1..6 }
     validates :shipping_fee_burden_id, inclusion: { in: 1..2 }
