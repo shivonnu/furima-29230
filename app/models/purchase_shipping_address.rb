@@ -17,3 +17,4 @@ class PurchaseShippingAddress
   end
 end
 
+
