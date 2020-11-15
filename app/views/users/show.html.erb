@@ -1,6 +1,5 @@
 <%= render "shared/second-header"%>
 
-<%#= form_for(current_user) do |f| %>
 <%= form_with model: @user, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
@@ -9,7 +8,7 @@
     </h1>
   </div>
   <%= render 'shared/error_messages', model: f.object  %> 
-    <div class="form-group">
+  <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>
       <span class="indispensable">必須</span>
@@ -82,13 +81,18 @@
                     date_separator: '%s'),
                   "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
     </div>
-  <div class='login-btn'>
-    <%= f.submit "更新する" ,class:"sell-btn" %>
-  </div><br>
+    <div class="form-group">
+    <h2 class='form-bottom-text'>
+      「更新する」のボタンを押すことにより、
+      <br>情報
+      が更新されログアウトします。
+    </h2>
+  </div>
     <div class="sell-btn-contents">
+      <%= f.submit "更新する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
-
+  </div>
 </div>
 <% end %>
 

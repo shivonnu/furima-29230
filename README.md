@@ -18,7 +18,8 @@
 
 - has_many   :items
 - has_many   :purchases
-- has_one    :cards
+- has_one    :card, dependent: :destroy
+
 
 ## Cards テーブル
 
