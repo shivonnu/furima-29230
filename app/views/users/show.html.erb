@@ -6,6 +6,21 @@
     <h1 class='form-header-text'>
       <%= @user.nickname %>のマイページ
     </h1>
+      <h3 class='form-header-text'>
+    カード情報
+    </h3>
+  </div>
+  <div class="form-text">
+    【カード番号】
+    <br>
+    <%= "**** **** **** " + @card[:last4] %>
+    <br>
+    【有効期限】
+    <br>
+    <%= @card[:exp_month] %>
+    /
+    <%= @card[:exp_year] %>
+  </div>
   </div>
   <%= render 'shared/error_messages', model: f.object  %> 
   <div class="form-group">
