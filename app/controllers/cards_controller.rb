@@ -10,6 +10,7 @@ class CardsController < ApplicationController
     description: 'test', 
     card: params[:token] 
     )
+    @purchase = Card.new(card_params)
     card = Card.new( 
       card_token: params[:token], 
       customer_token: customer.id, 
@@ -24,8 +25,8 @@ class CardsController < ApplicationController
     end
   end
   private
-  def purchase_params
-    params.require(:purchase_shipping_address).permit(:postal_code, :shipping_area_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+  def card_params
+    params.require(:purchase_shipping_address).permit().merge(user_id: current_user.id, customer_token: customer.id, token: params[:token])
   end
 
 
