@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
  
-
   def new
   end
 
@@ -8,10 +7,11 @@ class CardsController < ApplicationController
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
     customer = Payjp::Customer.create(
     description: 'test', 
-    card: params[:token] 
+    card: params[:card_token] 
     )
+
     card = Card.new( 
-      card_token: params[:token], 
+      card_token: params[:card_token], 
       customer_token: customer.id, 
       user_id: current_user.id 
     )
@@ -22,7 +22,7 @@ class CardsController < ApplicationController
       render :new
     end
   end
+
+
   
-
-
 end
