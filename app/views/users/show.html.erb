@@ -6,22 +6,31 @@
     <h1 class='form-header-text'>
       <%= @user.nickname %>のマイページ
     </h1>
-      <h3 class='form-header-text'>
-    カード情報
-    </h3>
+     <div class="form-group">
+      <h3 class='form-text-wrap'>
+      <p class='form-info-header'>
+      カード情報
+      </p>
+      </h3>
+      </div>
   </div>
-  <div class="form-text">
-    【カード番号】
-    <br>
-    <%= "**** **** **** " + @card[:last4] %>
-    <br>
-    【有効期限】
-    <br>
-    <%= @card[:exp_month] %>
-    /
-    <%= @card[:exp_year] %>
+  <br>
+  <div class="form-group">
+    <div class='form-header'>
+      <div class="form-text-wrap">
+        <label class="form-text">【カード番号】</label>
+        <br>
+        <label class="form-text"><%= "**** **** **** " + @card[:last4] %></label>
+        <br>
+        <label class="form-text">【有効期限】</label>
+        <br>
+        <label class="form-text"><%= @card[:exp_month] %></label>
+      <label class="form-text"> /</label>
+      <label class="form-text"> <%= @card[:exp_year] %></label>
+      </div>
+    </div>
   </div>
-  </div>
+  <br>
   <%= render 'shared/error_messages', model: f.object  %> 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -102,6 +111,7 @@
       <br>情報
       が更新されログアウトします。
     </h2>
+     </div>
   </div>
     <div class="sell-btn-contents">
       <%= f.submit "更新する" ,class:"sell-btn" %>
