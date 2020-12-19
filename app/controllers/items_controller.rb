@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
     else
       flash.now
       render :new
+    
     end
   end
 

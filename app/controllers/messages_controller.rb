@@ -5,14 +5,17 @@ class MessagesController < ApplicationController
 
   def create
     @item = Item.find_by(id: params[:item_id])
+    unless current_user.id == @item.user_id
+      redirect_to root_path
     @message = MessageItemMessageAddress.new(message_params)
-    if #@message.valid?
+    if @message.valid?
        @message.save
       ActionCable.server.broadcast 'message_channel', content: @message
     else
       flash.now
       render :show
     end
+  end
   end
 
   private
