@@ -84,9 +84,22 @@
     </div>
   </div>
 
+ <div>
+<div id='messages'>
+<% if ItemMessage.where(item_id: @item.id).present? %>
+    <% @messages.reverse_each do |message| %>
+      <p><%= message.message.text %></p>
+    <% end %>
+  <% end %>
+</div>
+</div>
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
+<div id='messages'>
+ 
+</div>
+<%= form_with  model:@message, url: item_messages_path(@item.id) do |f| %>
+<%= f.text_area :text, class:"comment-text" %>
+
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
@@ -94,9 +107,9 @@
       </p>
       <button type="submit" class="comment-btn">
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
+        <span><%= f.submit 'コメントする' ,class:"comment-btn"%><span>
       </button>
-    </form>
+    <% end %>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">
@@ -107,6 +120,7 @@
     </a>
   </div>
   <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
+
 </div>
 
 <%= render "shared/footer" %>
