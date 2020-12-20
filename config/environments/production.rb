@@ -60,7 +60,8 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "furima_29230_production"
-  config.action_cable.disable_request_forgery_protection = true
+  ActionCable.server.config.disable_request_forgery_protection = true
+  #config.action_cable.disable_request_forgery_protection = true
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
