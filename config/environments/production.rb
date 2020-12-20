@@ -40,9 +40,9 @@ Rails.application.configure do
    config.active_storage.service = :amazon
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
-   config.action_cable.url = 'ws://52.194.15.165/cable'
+  # config.action_cable.url = 'wss://example.com/cable'
   
-   config.action_cable.allowed_request_origins = [ '52.194.15.165' ]
+   config.action_cable.allowed_request_origins = [ 'http://52.194.15.165', /http:\/\/52.194.15.165.*/ ]
   
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -60,8 +60,7 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "furima_29230_production"
-  ActionCable.server.config.disable_request_forgery_protection = true
-  #config.action_cable.disable_request_forgery_protection = true
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
