@@ -5,8 +5,9 @@ test:
   adapter: test
 
 production:
-  adapter: async
-  
+  adapter: redis
+  url: redis://52.194.15.165
+  channel_prefix: furima_29230_production
   
   # production:
   # adapter: redis

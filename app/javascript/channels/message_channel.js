@@ -9,11 +9,11 @@ consumer.subscriptions.create("MessageChannel" , {
     // Called when the subscription has been terminated by the server
   },
 
-  // received(data) {
-  //   const html = `<p>${data.content.text}</p>`;
-  //   const messages = document.getElementById('messages');
-  //   const newMessage = document.getElementById('message_text');
-  //   messages.insertAdjacentHTML('afterbegin', html);
-  //   newMessage.value='';
-  // }
+  received(data) {
+    const html = `<p>${data.content.text}</p>`;
+    const messages = document.getElementById('messages');
+    const newMessage = document.getElementById('message_text');
+    messages.insertAdjacentHTML('afterbegin', html);
+    newMessage.value='';
+  }
 });
