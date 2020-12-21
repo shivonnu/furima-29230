@@ -88,7 +88,9 @@
 <div id='messages'>
 <% if ItemMessage.where(item_id: @item.id).present? %>
     <% @messages.reverse_each do |message| %>
-      <p id = 'message_text'><%= message.message.text %></p>
+    <a id="message_text">
+      <p><%= message.message.text%></p>
+    </a>
     <% end %>
   <% end %>
 </div>
@@ -97,7 +99,7 @@
 
 
 
-<%= form_with(model:[@item, @message], url: item_messages_path(@item.id)) do |f| %>
+<%= form_with model: @message, url: item_messages_path(@item.id) do |f| %>
 <%= f.text_area :text, class:"comment-text" %>
 
       <p class="comment-warn">
