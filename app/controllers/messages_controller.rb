@@ -11,7 +11,8 @@ class MessagesController < ApplicationController
     @message = MessageItemMessageAddress.new(message_params)
     if @message.valid?
        @message.save
-      
+       render :show
+       #ActionCable.server.broadcast 'message_channel', content: "#{ @message.content }"
     else
       flash.now
       render :show
