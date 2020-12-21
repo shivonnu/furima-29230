@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'messages/new'
   devise_for :users
   resources :items do
-    resources :messages, only: [:create]
+    resources :messages, only: [:new, :create]
     resources :purchases, only: [:new, :create]
   end
   resources :users, only: [:show, :update]
