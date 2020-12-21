@@ -6,7 +6,7 @@ test:
 
 production:
   adapter: redis
-  url: redis://52.194.15.165
+  url: redis://52.194.15.165:3000
   channel_prefix: furima_29230_production
   
   # production:
