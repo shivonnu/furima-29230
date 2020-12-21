@@ -5,13 +5,12 @@ class MessagesController < ApplicationController
 
   def create
     @item = Item.find_by(id: params[:item_id])
-    @messages = ItemMessage.includes(:message).where(item_id: @item.id)
     unless current_user.id == @item.user_id
       redirect_to root_path
     @message = MessageItemMessageAddress.new(message_params)
     if @message.valid?
        @message.save
-       redirect_to item_path(@item.id)
+       return redirect_to root_path
        #ActionCable.server.broadcast 'message_channel', content: "#{ @message.content }"
     else
       flash.now
