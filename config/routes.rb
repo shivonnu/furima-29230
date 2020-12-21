@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
   resources :cards, only: [:new, :create]
   root to: "items#index"
+
+  mount ActionCable.server => '/cable'
   end
