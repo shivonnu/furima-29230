@@ -97,7 +97,7 @@
 
 
 
-<%= form_with  model:@message, url: item_messages_path(@item.id) do |f| %>
+<%= form_with(model:[@item, @message], url: item_messages_path(@item.id)) do |f| %>
 <%= f.text_area :text, class:"comment-text" %>
 
       <p class="comment-warn">
