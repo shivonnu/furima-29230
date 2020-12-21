@@ -3,5 +3,4 @@
 
 import { createConsumer } from "@rails/actioncable"
 
-createConsumer('http://ws.52.194.15.165/cable')
 export default createConsumer()
