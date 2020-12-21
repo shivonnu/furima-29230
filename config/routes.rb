@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   resources :cards, only: [:new, :create]
   root to: "items#index"
 
-  mount ActionCable.server => '/cable'
   end
