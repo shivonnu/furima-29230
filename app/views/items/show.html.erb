@@ -94,7 +94,7 @@
 </div>
 </div>
   <div class="comment-box">
-    <%= form_with model: @message, url: item_messages_path(@item.id) do |f| %>
+    <%= form_with model: @message, url: item_messages_path(@item.id), local: true do |f| %>
     <%= f.text_field :text, class:"comment-text" %>
 
       <p class="comment-warn">

@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
     if @message.valid?
        @message.save
        ActionCable.server.broadcast 'message_channel', content: @message
-       redirect_to item_path(@item.id)
     else
       flash.now
       render :show
