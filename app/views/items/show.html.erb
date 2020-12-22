@@ -88,19 +88,14 @@
 <div id='messages'>
 <% if ItemMessage.where(item_id: @item.id).present? %>
     <% @messages.reverse_each do |message| %>
-    <a id="message_text">
       <p><%= message.message.text%></p>
-    </a>
     <% end %>
   <% end %>
 </div>
 </div>
   <div class="comment-box">
-
-
-
-<%= form_with model: @message, url: item_messages_path(@item.id) do |f| %>
-<%= f.text_area :text, class:"comment-text" %>
+    <%= form_with model: @message, url: item_messages_path(@item.id) do |f| %>
+    <%= f.text_area :text, class:"comment-text" %>
 
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。

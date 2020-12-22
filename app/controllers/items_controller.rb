@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @itemmessage = ItemMessage.all
     @message = MessageItemMessageAddress.new
     @messages = ItemMessage.includes(:message).where(item_id: @item.id)
   end
