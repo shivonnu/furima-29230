@@ -95,7 +95,7 @@
 </div>
   <div class="comment-box">
     <%= form_with model: @message, url: item_messages_path(@item.id) do |f| %>
-    <%= f.text_area :text, class:"comment-text" %>
+    <%= f.text_field :text, class:"comment-text" %>
 
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
