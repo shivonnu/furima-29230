@@ -2,7 +2,7 @@ class MessageItemMessageAddress
   
   include ActiveModel::Model
 
-  attr_accessor :text, :item_id, :message_id
+  attr_accessor :text, :item_id, :message_id, :content, :message_channel
  
   # with_options presence: true do
   #   validates :text
