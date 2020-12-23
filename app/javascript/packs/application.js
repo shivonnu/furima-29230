@@ -6,9 +6,9 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("../keisan")
-require("../preview")
-require("../card")
+require("keisan")
+require("preview")
+require("card")
 
 
 //追加
