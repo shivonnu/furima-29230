@@ -85,8 +85,9 @@
   </div>
 
  <div>
-<div id='messages'>
+
 <% if ItemMessage.where(item_id: @item.id).present? %>
+  <div id='messages'>
     <% @messages.reverse_each do |message| %>
       <p><%= message.message.text%></p>
     <% end %>
