@@ -10,7 +10,7 @@ class MessageItemMessageAddress
 
   def save
     message = Message.create(text: text)
-    ActionCable.server.broadcast 'message_channel', content: message
+   # ActionCable.server.broadcast 'message_channel', content: message
     ItemMessage.create(item_id: item_id, message_id: message.id)
   end
 end
