@@ -8,12 +8,12 @@ class MessagesController < ApplicationController
     # unless current_user.id == @item.user_id
     #   redirect_to root_path
     @message = MessageItemMessageAddress.new(message_params)
-    if @message.valid?
-       @message.save
+    # if @message.valid?
+    if @message.save
        ActionCable.server.broadcast 'message_channel', content: @message
-    else
-      flash.now
-      render :show
+    # else
+    #   flash.now
+    #   render :show
     end
   # end
   end
