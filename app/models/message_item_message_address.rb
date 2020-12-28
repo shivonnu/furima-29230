@@ -4,13 +4,12 @@ class MessageItemMessageAddress
 
   attr_accessor :text, :item_id, :message_id, :content, :message_channel
  
-  # with_options presence: true do
-  #   validates :text
-  # end
+  with_options presence: true do
+    validates :text
+  end
 
   def save
     message = Message.create(text: text)
-   # ActionCable.server.broadcast 'message_channel', content: message
     ItemMessage.create(item_id: item_id, message_id: message.id)
   end
 end
