@@ -6,8 +6,7 @@ class MessagesController < ApplicationController
   def create
     @item = Item.find_by(id: params[:item_id])
     @message = MessageItemMessageAddress.new(message_params)
-    if @message.valid?
-       @message.save
+    if @message.save
        redirect_to @item
     else
       flash.now

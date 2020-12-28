@@ -4,8 +4,8 @@ class MessageItemMessageAddress
 
   attr_accessor :text, :item_id, :message_id, :content, :message_channel
  
-  with_options presence: true do
-    validates :text
+  # with_options presence: true do
+  #   validates :text
   end
 
   def save
