@@ -2,44 +2,44 @@
 
 <div class="item-show">
   <div class="item-box">
-    <h2 class="name">
-      <%= @item.name %>
-    </h2>
-    <div class='item-img-content'>
-    <% @item.images.each do |image| %>
-     <%= image_tag(image, class: 'item-box-img') %>
-      <% end %>
-      
-     <% if  Purchase.where(item_id: @item.id).present? %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
-     <%end%>
-    </div>
-    <div class="item-price-box">
-      <span class="item-price">
-        ¥ <%= @item.price %>
-      </span>
-      <span class="item-postage">
-        (税込) <%= @item.shipping_fee_burden.name %>
-      </span>
-    </div>
+        <h2 class="name">
+          <%= @item.name %>
+        </h2>
+          <div class='item-img-content'>
+          <% @item.images.each do |image| %>
+          <%= image_tag(image, class: 'item-box-img') %>
+            <% end %>
+            
+              <% if  Purchase.where(item_id: @item.id).present? %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+              <%end%>
+          </div>
+        <div class="item-price-box">
+          <span class="item-price">
+            ¥ <%= @item.price %>
+          </span>
+          <span class="item-postage">
+            (税込) <%= @item.shipping_fee_burden.name %>
+          </span>
+        </div>
     
-  <% if user_signed_in?%>
-      <% if current_user.id == @item.user_id%>
-        <% unless  Purchase.where(item_id: @item.id).present? %>
-          <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-          <p class='or-text'>or</p>
-          <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
-        <% end %>
-      <% end %>
+      <% if user_signed_in?%>
+          <% if current_user.id == @item.user_id%>
+            <% unless  Purchase.where(item_id: @item.id).present? %>
+              <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+              <p class='or-text'>or</p>
+              <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
+            <% end %>
+          <% end %>
 
-      <% unless current_user.id == @item.user_id%>
-        <% unless  Purchase.where(item_id: @item.id).present? %>
-          <%= link_to '購入画面に進む', new_item_purchase_path(@item.id),class:"item-red-btn"%>
-        <% end %>
+          <% unless current_user.id == @item.user_id%>
+            <% unless  Purchase.where(item_id: @item.id).present? %>
+              <%= link_to '購入画面に進む', new_item_purchase_path(@item.id),class:"item-red-btn"%>
+            <% end %>
+          <% end %>
       <% end %>
-  <% end %>
 
     <div class="item-explain-box">
       <span><%= @item.description %></span>
@@ -72,59 +72,57 @@
         </tr>
       </tbody>
     </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
-      </div>
-    </div>
-  </div>
-      <div class="items-sell-main">
-        <div class="item-show">
-          <div class="item-box">
-            <div class="item-explain-box">
-              <div>
-                <% if ItemMessage.where(item_id: @item.id).present? %>
-                <div id='messages'>
-                <% @messages.reverse_each do |message| %>
-                  <p><%= message.message.text%></p>
-                <% end %>
-                <% end %>
-                </div>
-              </div>
-                <div class="comment-box">
-                  <%= form_with model: @message, url: item_messages_path(@item.id), local: true do |f| %>
-                  <%= f.text_field :text, class:"comment-text" %>
-
-                    <p class="comment-warn">
-                      相手のことを考え丁寧なコメントを心がけましょう。
-                      <br>
-                      不快な言葉遣いなどは利用制限や退会処分となることがあります。
-                    </p>
-                    <button type="submit" class="comment-btn">
-                      <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-                      <span><%= f.submit 'コメントする' ,class:"comment-btn"%><span>
-                    </button>
-                  <% end %>
-                </div>
-                <div class="links">
-                  <a href="#" class="change-item-btn">
-                    ＜ 前の商品
-                  </a>
-                  <a href="#" class="change-item-btn">
-                    後ろの商品 ＞
-                  </a>
-                </div>
-              <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
-              </div>
+      <div class="option">
+          <div class="favorite-btn">
+            <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+            <span>お気に入り 0</span>
           </div>
-        </div>
+          <div class="report-btn">
+            <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+            <span>不適切な商品の通報</span>
+          </div>
       </div>
-    </div>
   </div>
+          <div class="items-sell-main">
+                <div class="weight-bold-text">
+                      <div class="item-box">
+                        <div class="item-explain-box">
+                            <div>
+                                <% if ItemMessage.where(item_id: @item.id).present? %>
+                                <div id='messages'>
+                                <% @messages.reverse_each do |message| %>
+                                  <p><%= message.message.text%></p>
+                                <% end %>
+                                <% end %>
+                                </div>
+                              </div>
+                                  <div class="comment-box">
+                                    <%= form_with model: @message, url: item_messages_path(@item.id), local: true do |f| %>
+                                    <%= f.text_field :text, class:"comment-text" %>
+
+                                      <p class="comment-warn">
+                                        相手のことを考え丁寧なコメントを心がけましょう。
+                                        <br>
+                                        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+                                      </p>
+                                      <button type="submit" class="comment-btn">
+                                        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+                                        <span><%= f.submit 'コメントする' ,class:"comment-btn"%><span>
+                                      </button>
+                                    <% end %>
+                                  </div>
+                                <div class="links">
+                                  <a href="#" class="change-item-btn">
+                                    ＜ 前の商品
+                                  </a>
+                                  <a href="#" class="change-item-btn">
+                                    後ろの商品 ＞
+                                  </a>
+                                </div>
+                          <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
+                        </div>
+                    </div>
+                </div>
+          </div>
  </div>
 <%= render "shared/footer" %>
