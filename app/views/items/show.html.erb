@@ -87,8 +87,8 @@
                       <div class="item-box">
                         <div class="item-explain-box">
                             <div>
-                                <% if ItemMessage.where(item_id: @item.id).present? %>
                                 <div id='messages'>
+                                <% if ItemMessage.where(item_id: @item.id).present? %>
                                 <% @messages.reverse_each do |message| %>
                                   <p><%= message.message.text%></p>
                                 <% end %>
