@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       render :show
     end
   end
-  end
+  
 
   private
 
