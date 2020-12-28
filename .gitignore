@@ -32,3 +32,4 @@ yarn-debug.log*
 
 # .DS_Storeがgithubに上がるのを今後無視
 .DS_Store
+/vendor/bundle
