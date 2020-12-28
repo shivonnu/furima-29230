@@ -88,7 +88,7 @@
                         <div class="item-explain-box">
                             <div>
                                 <div id='messages'>
-                                コメント
+                                <span>コメント</span>
                                 <% if ItemMessage.where(item_id: @item.id).present? %>
                                 <% @messages.reverse_each do |message| %>
                                   <p><%= message.message.text%></p>
