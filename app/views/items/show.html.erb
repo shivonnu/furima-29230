@@ -85,7 +85,7 @@
   </div>
 
  <div>
-
+<div class="option">
 <% if ItemMessage.where(item_id: @item.id).present? %>
   <div id='messages'>
     <% @messages.reverse_each do |message| %>
@@ -118,7 +118,7 @@
     </a>
   </div>
   <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
-
+  </div>
 </div>
 
 <%= render "shared/footer" %>
