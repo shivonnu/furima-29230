@@ -36,3 +36,4 @@ yarn-debug.log*
 .DS_Store
 /vendor/bundle
 config/credentials.yml.enc
+config/credentials.yml.enc
