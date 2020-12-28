@@ -6,7 +6,7 @@ class MessageItemMessageAddress
  
   # with_options presence: true do
   #   validates :text
-  end
+  # end
 
   def save
     message = Message.create(text: text)
