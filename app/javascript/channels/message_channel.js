@@ -10,10 +10,10 @@ consumer.subscriptions.create("MessageChannel", {
   },
 
   received(data) {
-  //   const html = `<p>${data.content.text}</p>`;
-  //   const messages = document.getElementById('messages');
-  //   const newMessage = document.getElementById('message_item_message_address_text');
-  //   messages.insertAdjacentHTML('afterbegin', html);
-  //   newMessage.value='';
-  // }
+    const html = `<p>${data.content.text}</p>`;
+    const messages = document.getElementById('messages');
+    const newMessage = document.getElementById('message_item_message_address_text');
+    messages.insertAdjacentHTML('afterbegin', html);
+    newMessage.value='';
+  }
 });
