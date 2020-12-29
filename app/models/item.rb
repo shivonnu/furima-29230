@@ -8,7 +8,6 @@ class Item < ApplicationRecord
   has_one    :purchase
   has_many_attached :images
   belongs_to :user
-  has_one    :message
   has_many :item_messages
   validate :image_presence
 
