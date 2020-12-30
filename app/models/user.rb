@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many   :items
   has_many   :purchases
   has_one    :card, dependent: :destroy
+  has_one    :shipping_address, dependent: :destroy
   
   with_options presence: true do
     validates :last_name, :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "が空です 全角で入力して下さい"}

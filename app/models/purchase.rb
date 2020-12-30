@@ -1,5 +1,8 @@
 class Purchase < ApplicationRecord
   belongs_to :user
-  belongs_to :item
-  has_one    :shipping_address
+ 
+  def save
+    purchase = Purchase.create(user_id: user_id, item_id: item_id)
+  end
+
 end
