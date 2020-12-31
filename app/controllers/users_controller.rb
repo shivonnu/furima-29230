@@ -29,8 +29,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:purchase_shipping_address).permit(:nickname, :email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday) 
+    params.require(:user).permit(:nickname, :email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday) 
   end
 
   
 end
+
+

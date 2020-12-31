@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
   end
 
   def new
-     @purchase = PurchaseShippingAddress.new
+     @purchase = Purchase.new
      if    current_user.id == @item.user_id
            redirect_to root_path
      elsif Purchase.where(item_id: @item.id).present?
@@ -16,7 +16,7 @@ class PurchasesController < ApplicationController
 
 
   def create
-     @purchase = PurchaseShippingAddress.new(purchase_params)
+     @purchase = Purchase.new(purchase_params)
      redirect_to new_card_path and return unless current_user.card.present?
       if @purchase.valid?
           pay_item
@@ -34,7 +34,7 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase_shipping_address).permit(:postal_code, :shipping_area_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:purchase).merge(user_id: current_user.id, item_id: @item.id)
   end
 
   def pay_item
