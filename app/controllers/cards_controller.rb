@@ -1,11 +1,12 @@
 class CardsController < ApplicationController
  
   def new
+    @card = Card.new
   end
 
   def create
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
-    binding.pry
+   
     customer = Payjp::Customer.create(
     description: 'test', 
     card: params[:card_token] 
