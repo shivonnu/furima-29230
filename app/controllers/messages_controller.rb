@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  
   def new
     @message = MessageItemMessageAddress.new
   end

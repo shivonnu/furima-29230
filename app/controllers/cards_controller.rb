@@ -24,7 +24,5 @@ class CardsController < ApplicationController
       render :new
     end
   end
-
-
   
 end

@@ -1,9 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:new, :create]
- 
-  def index
-  end
 
   def new
      @purchase = Purchase.new
@@ -14,14 +11,12 @@ class PurchasesController < ApplicationController
      end
  end
 
-
   def create
-     @purchase = Purchase.new(purchase_params)
+     @user = User.find_by(id: current_user.id)
+     @purchase = Purchase.new(user_id: current_user.id, item_id: @item.id)
      redirect_to new_card_path and return unless current_user.card.present?
-      if @purchase.valid?
+      if @purchase.save
           pay_item
-          @purchase.save
-          return redirect_to root_path
       else
           flash.now
           render 'new'
@@ -31,10 +26,6 @@ class PurchasesController < ApplicationController
   private
   def set_item
     @item = Item.find_by(id: params[:item_id])
-  end
-
-  def purchase_params
-    params.require(:purchase).merge(user_id: current_user.id, item_id: @item.id)
   end
 
   def pay_item
