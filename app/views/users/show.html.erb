@@ -39,27 +39,27 @@
           </tr>
           <tr>
             <th class="detail-item"> 郵便番号 </th>
-            <td class="detail-value"><%= @shippingaddress.postal_code %></td>
+            <td class="detail-value"><%= @address.postal_code %></td>
           </tr>
           <tr>
             <th class="detail-item"> 住所1 </th>
-            <td class="detail-value"><%= @shippingaddress.city %></td>
+            <td class="detail-value"><%= @address.city %></td>
           </tr>
           <tr>
             <th class="detail-item"> 住所2 </th>
-            <td class="detail-value"><%= @shippingaddress.address %></td>
+            <td class="detail-value"><%= @address.address %></td>
           </tr>
           <tr>
             <th class="detail-item"> 住所３ </th>
             <td class="detail-value">
             <% if ShippingAddress.where(user_id: @user.id).present?  %>
-            <%= @shippingaddress.building_name %>
+            <%= @address.building_name %>
             <%end%>
             </td>
           </tr>
           <tr>
             <th class="detail-item"> 電話番号 </th>
-            <td class="detail-value"><%= @shippingaddress.phone_number %></td>
+            <td class="detail-value"><%= @address.phone_number %></td>
           </tr>
           </table>
         </tbody>
