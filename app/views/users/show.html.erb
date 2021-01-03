@@ -1,125 +1,72 @@
 <%= render "shared/second-header"%>
 
-<%= form_with model: @user, class: 'registration-main', local: true do |f| %>
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h1 class='form-header-text'>
-      <%= @user.nickname %>のマイページ
-    </h1>
-     <div class="form-group">
-      <h3 class='form-text-wrap'>
-      <p class='form-info-header'>
-      カード情報
-      </p>
-      </h3>
-      </div>
-  </div>
-  <br>
-  <div class="form-group">
-    <div class='form-header'>
-      <div class="form-text-wrap">
-        <label class="form-text">【カード番号】</label>
-        <br>
-        <label class="form-text"><%= "**** **** **** " + @card[:last4] %></label>
-        <br>
-        <label class="form-text">【有効期限】</label>
-        <br>
-        <label class="form-text"><%= @card[:exp_month] %></label>
-      <label class="form-text"> /</label>
-      <label class="form-text"> <%= @card[:exp_year] %></label>
-      </div>
-    </div>
-  </div>
-  <br>
-  <%= render 'shared/error_messages', model: f.object  %> 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">ニックネーム</label>
-      <span class="indispensable">必須</span>
-    </div>
-   <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"", maxlength:"40", autofocus: true %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">メールアドレス</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"" %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
-    <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード(確認)</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.password_field :pasword_confirmation, class:"input-default", id:"password-confirmation", placeholder:"" %>
-  </div>
-  <div class="form-group">
-    <p class='form-info-header'>
-      本人情報
-    </p>
-    
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">お名前(全角)</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-name-wrap'>
-      <%= f.text_area :first_name, class:"input-name", id:"first-name", placeholder:"" %>
-      <%= f.text_area :last_name, class:"input-name", id:"last-name", placeholder:"" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">お名前カナ(全角)</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-name-wrap'>
-      <%= f.text_area :first_name_kana, class:"input-name", id:"first-name-kana", placeholder:"" %>
-      <%= f.text_area :last_name_kana, class:"input-name", id:"last-name-kana", placeholder:"" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">生年月日</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-birth-wrap'>
-      <%= raw sprintf(
-                  f.date_select(
-                    :birthday,
-                    class:'select-birth',
-                    id:"birth-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-    </div>
-    <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「更新する」のボタンを押すことにより、
-      <br>情報
-      が更新されログアウトします。
-    </h2>
-     </div>
-  </div>
-    <div class="sell-btn-contents">
-      <%= f.submit "更新する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-    
+ <div class="item-show">
+   <div class="item-box">
+        <h2 class="name">
+          <%= @user.nickname %>のマイページ
+        </h2>
+        <div class="item-price-box">
+          <span class="item-postage">
+          登録情報
+          </span>
+        </div>
+      
+        <table class="detail-table">
+        <tbody>
+          <tr>
+            <th class="detail-item">カード番号</th>
+            <td class="detail-value"><%= "**** **** **** " + @card[:last4] %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">有効期限</th>
+            <td class="detail-value"><%= @card[:exp_month] %>/<%= @card[:exp_year] %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> ニックネーム </th>
+            <td class="detail-value"><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> メールアドレス </th>
+            <td class="detail-value"><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> お名前 </th>
+            <td class="detail-value"><%= @user.first_name %><%= @user.last_name %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> 生年月日 </th>
+            <td class="detail-value"><%= @user.birthday %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> 郵便番号 </th>
+            <td class="detail-value"><%= @shippingaddress.postal_code %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> 住所1 </th>
+            <td class="detail-value"><%= @shippingaddress.city %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> 住所2 </th>
+            <td class="detail-value"><%= @shippingaddress.address %></td>
+          </tr>
+          <tr>
+            <th class="detail-item"> 住所３ </th>
+            <td class="detail-value">
+            <% if ShippingAddress.where(user_id: @user.id).present?  %>
+            <%= @shippingaddress.building_name %>
+            <%end%>
+            </td>
+          </tr>
+          <tr>
+            <th class="detail-item"> 電話番号 </th>
+            <td class="detail-value"><%= @shippingaddress.phone_number %></td>
+          </tr>
+          </table>
+        </tbody>
+
+        <%= link_to '会員情報を編集する', edit_user_registration_path, class:"item-red-btn" %>
+        <%= link_to '登録住所を編集する',  edit_addresses_path, class:"item-red-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
   </div>
 </div>
-<% end %>
-
 <%= render "shared/second-footer"%>

@@ -7,7 +7,7 @@
     </h1>
 
 
-    <%= form_with model: @address, url: addresses_path, local: true do |f| %>
+    <%= form_with model: @address, url: edit_addresses_path, local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: @address %>
    
     <div class='shipping-address-form'>

@@ -8,6 +8,81 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
+  def edit
+    @user = User.find_by(id: current_user.id)
+  end
+
+  def edit_address
+    @user = User.find_by(id: current_user.id)
+    @address = ShippingAddress.find_by(user_id: @user.id)
+  end
+
+  def update
+    @user = User.find_by(id: current_user.id)
+    if @user.update(user_params)
+    
+    else
+      flash.now
+      render :edit
+    end
+    # unless @user.valid?
+    #   render :edit and return
+    # end
+    # @user.update
+    # if @address.update(shipping_address_params)
+    #   redirect_to item_path(@item.id)
+    # else
+    #   flash.now
+    #   render :edit
+    # end
+    # @address = User.find_by(id: current_user.id)
+    # @address = UserShippingAddress.update
+    # redirect_to root_path
+  end
+
+  def update_address
+    @user = User.find_by(id: current_user.id)
+    @address = ShippingAddress.find_by(user_id: @user.id)
+    unless @address.valid?
+      render :edit_address and return
+    end
+    @address.update(shipping_address_params)
+    # @address = ShippingAddress.new(shipping_address_params)
+    #  unless @address.valid?
+    #   render :edit_address and return
+    # end
+    # @address.update(shipping_address_params)
+    # @user.build_shipping_address(@address.attributes)
+    # @user.update
+    # sign_in(:user, @user)
+  end
+
+  # def update
+  #   @user = User.find_by(id: current_user.id)
+  #   @user = User.new(user_params)
+  #   unless @user.valid?
+  #     render :edit and return
+  #   end
+  #   session["devise.regist_data"] = {user: @user.attributes}
+  #   session["devise.regist_data"][:user]["password"] = params[:user][:password]
+  #   @address = @user.build_shipping_address
+  #   render :edit_address
+    
+  # end
+
+  # def update_address
+  #   @user = User.find_by(id: current_user.id)
+  #   @user = User.new(session["devise.regist_data"]["user"])
+  #   @address = ShippingAddress.new(shipping_address_params)
+  #    unless @address.valid?
+  #      render :new_address and return
+  #    end
+  #   @user.build_shipping_address(@address.attributes)
+  #   @user.update
+  #   session["devise.regist_data"]["user"].clear
+  #   sign_in(:user, @user)
+  # end
+
   def create
     @user = User.new(sign_up_params)
      unless @user.valid?
@@ -36,6 +111,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def shipping_address_params
     params.require(:shipping_address).permit(:postal_code, :shipping_area_id, :city, :address, :building_name, :phone_number)
   end
+
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday) 
+  end
+
 
   # GET /resource/sign_up
   # def new

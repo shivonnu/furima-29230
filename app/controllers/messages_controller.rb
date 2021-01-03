@@ -21,3 +21,4 @@ class MessagesController < ApplicationController
     params.require(:message_item_message_address).permit(:text).merge(item_id: @item.id)
   end
 end
+
