@@ -6,5 +6,4 @@ class ShippingAddress < ApplicationRecord
     validates :shipping_area_id, numericality: {other_than: 0}
     validates :city, :address, :phone_number
   end
- 
 end
