@@ -34,13 +34,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-     unless @user.valid?
-       render :new and return
-     end
-    session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @address = @user.build_shipping_address
-    render :new_address
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+
+      session["devise.regist_data"] = {user: @user.attributes}
+      session["devise.regist_data"][:user]["password"] = params[:user][:password] 
+      @address = @user.build_shipping_address
+      render :new_address
+
+    elsif @user.valid?
+      session["devise.regist_data"] = {user: @user.attributes}
+      session["devise.regist_data"][:user]["password"] = params[:user][:password]
+      @address = @user.build_shipping_address
+      render :new_address
+    else
+      render :new and return
+    end
   end
  
   def create_address
