@@ -1,16 +1,21 @@
+
+
 class ItemTagInclude
+
   include ActiveModel::Model
 
-  attr_accessor :name, :description, :category_id, :status_id, :shipping_fee_burden_id, :shipping_area_id, :days_to_ship_id, :price, images: [], tag_id:, item_id:
+  attr_accessor :name, :description, :category_id, :status_id, :shipping_fee_burden_id, :shipping_area_id, :days_to_ship_id, :price, :tag_name, :tag_id, :item_id, :user_id, :image_presence, :images
 
-  validate :image_presence
 
-  def image_presence
-    if images.attached?
-    else
-      errors.add(:images, 'を選択してください')
-    end
-  end
+  # validate :image_presence
+
+  # def image_presence
+  #   @item = Item.new
+  #   if @item.images.attached?
+  #   else
+  #     errors.add(:images, 'を選択してください')
+  #   end
+  # end
  
   with_options presence: true do
     validates :price, format: {with: /\A[0-9]+\z/, message: "が空です 半角で入力してください"}
@@ -21,11 +26,12 @@ class ItemTagInclude
     validates :shipping_fee_burden_id, inclusion: { in: 1..2 }
     validates :shipping_area_id, inclusion: { in: 1..47 }
     validates :days_to_ship_id, inclusion: { in: 1..3 }
+    validates :images
   end
 
   def save
     item = Item.create(name: name, description: description, category_id: category_id, status_id: status_id, shipping_fee_burden_id: shipping_fee_burden_id, shipping_area_id: shipping_fee_burden_id, days_to_ship_id: days_to_ship_id, price: price, images: [])
-    tag = Tag.where(name: name).first_or_initialize
+    tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
     ItemTag.create(tag_id: tag.id, item_id: item.id)
   end

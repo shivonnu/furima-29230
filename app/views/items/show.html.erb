@@ -44,6 +44,11 @@
     <div class="item-explain-box">
       <span><%= @item.description %></span>
     </div>
+    <% if  Tag.where(item_id: @item.id).present? %>
+     <div class="item-explain-box">
+      <span>#<%= @tag.tag_name %></span>
+    </div>
+    <%end%>
     <table class="detail-table">
       <tbody>
         <tr>

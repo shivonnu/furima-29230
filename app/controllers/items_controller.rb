@@ -8,15 +8,23 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @items = ItemTagInclude.new
   end
 
   def show
+    @tag = Tag.includes(:tag).where(item_id: @item.id)
     @message = MessageItemMessageAddress.new
     @messages = ItemMessage.includes(:message).where(item_id: @item.id)
   end
+
+  def search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
+  end
  
   def create
-    @item = ItemTagInclude.new(item_params)
+    @item = ItemTagInclude.new(item_tag_include_params)
     if @item.valid?
       @item.save
       redirect_to root_path
@@ -25,6 +33,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+  
 
   def edit
     unless current_user.id == @item.user_id
@@ -49,10 +58,15 @@ class ItemsController < ApplicationController
       render :show
     end
   end
+
+
   private
-  
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :status_id, :shipping_fee_burden_id, :shipping_area_id, :days_to_ship_id, :price, images: []).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :status_id, :shipping_fee_burden_id, :shipping_area_id, :days_to_ship_id, :price, :tag_name, images: []).merge(user_id: current_user.id)
+  end
+
+  def item_tag_include_params
+    params.require(:item_tag_include).permit(:name, :description, :category_id, :status_id, :shipping_fee_burden_id, :shipping_area_id, :days_to_ship_id, :price, :tag_name, images: []).merge(user_id: current_user.id)
   end
 
   def set_item
