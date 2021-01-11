@@ -8,13 +8,29 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @items = ItemTagInclude.new
   end
 
   def show
-    @tag = Tag.includes(:tag).where(item_id: @item.id)
+    @tag = ItemTag.includes(:tag).where(item_id: @item.id)
     @message = MessageItemMessageAddress.new
     @messages = ItemMessage.includes(:message).where(item_id: @item.id)
+  end
+
+  def new_tags
+    @item = Item.find_by(id: params[:id])
+    @item_tag_include = ItemTagInclude.new
+
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.valid?
+      @item.save
+      redirect_to item_tags_path(@item.id)
+    else
+      flash.now
+      render :new
+    end
   end
 
   def search
@@ -22,18 +38,21 @@ class ItemsController < ApplicationController
     tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
   end
- 
-  def create
-    @item = ItemTagInclude.new(item_tag_include_params)
-    if @item.valid?
-      @item.save
-      redirect_to root_path
+
+  
+  def create_tags
+    @item_tag_include = ItemTagInclude.new(tag_params)
+    if  @item_tag_include.save
+        redirect_to root_path
     else
-      flash.now
-      render :new
+        flash.now
+        render :new_tag
     end
   end
-  
+
+  def edit_tags
+    @tag = ItemTag.includes(:tag).where(item_id: params[:id])
+  end
 
   def edit
     unless current_user.id == @item.user_id
@@ -65,11 +84,12 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description, :category_id, :status_id, :shipping_fee_burden_id, :shipping_area_id, :days_to_ship_id, :price, :tag_name, images: []).merge(user_id: current_user.id)
   end
 
-  def item_tag_include_params
-    params.require(:item_tag_include).permit(:name, :description, :category_id, :status_id, :shipping_fee_burden_id, :shipping_area_id, :days_to_ship_id, :price, :tag_name, images: []).merge(user_id: current_user.id)
+  def tag_params
+    params.require(:item_tag_include).permit(:tag_name).merge(item_id: params[:item_id])
   end
 
   def set_item
     @item = Item.find_by(id: params[:id])
   end
+
 end

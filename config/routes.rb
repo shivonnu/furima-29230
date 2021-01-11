@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     patch 'edit_addresses', to: 'users/registrations#update_address'
   end
   resources :items do
+    get 'tags', to: 'items#new_tags'
+    post 'tags', to: 'items#create_tags'
+    get 'edit_tags', to: 'items#edit_tags'
+    post 'edit_tags', to: 'items#update_tags'
     resources :messages, only: [:new, :create]
     resources :purchases, only: [:new, :create]
   end

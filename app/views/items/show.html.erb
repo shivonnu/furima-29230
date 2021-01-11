@@ -44,9 +44,12 @@
     <div class="item-explain-box">
       <span><%= @item.description %></span>
     </div>
-    <% if  Tag.where(item_id: @item.id).present? %>
+    <% if  @tag.where(item_id: @item.id).present? %>
      <div class="item-explain-box">
-      <span>#<%= @tag.tag_name %></span>
+     <% @tag.each do |tag| %>
+      <span>#<%= tag.tag.tag_name%></span>
+    <% end %>
+      
     </div>
     <%end%>
     <table class="detail-table">
