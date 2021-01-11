@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :set_item, only: [:edit, :show, :update, :destroy, :index]
+  before_action :set_item, only: [:edit, :show, :update, :destroy, :index, :search]
   
   def index
     @items = Item.includes(:user).all.order("created_at DESC")   
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
   def search
     return nil if params[:keyword] == ""
-    tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
   end
 
