@@ -13,10 +13,8 @@ Rails.application.routes.draw do
     get 'tags', to: 'items#new_tags'
     post 'tags', to: 'items#create_tags'
     get 'search', to: 'items#search'
-
     get 'edit_tags', to: 'items#edit_tags'
     post 'edit_tags', to: 'items#update_tags'
-    
     resources :messages, only: [:new, :create]
     resources :purchases, only: [:new, :create]
   end
