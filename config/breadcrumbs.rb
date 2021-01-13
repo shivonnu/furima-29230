@@ -12,6 +12,12 @@ crumb :item do
   parent :root
 end
 
+crumb :edit_item do
+  link "商品編集", edit_item_path
+  parent :item
+end
+
+
 crumb :items_item_search do
   link "商品検索", items_item_search_path
   parent :root
@@ -57,7 +63,15 @@ crumb :new_card do
   parent :root
 end
 
+crumb :item_purchases do
+  link "購入完了", item_purchases_path
+  parent :new_item_purchase
+end
 
+crumb :new_item_purchase do
+  link "購入内容確認", new_item_purchase_path
+  parent :item
+end
 
 
 # crumb :projects do
