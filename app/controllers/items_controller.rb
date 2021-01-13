@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_item, only: [:edit, :show, :update, :destroy, :index, :search]
+  before_action :set_search_item, only: [:index, :item_search]
   
   def index
+    @item_all = Item.all
+    set_item_column
+    set_tag_column
     @items = Item.includes(:user).all.order("created_at DESC")   
   end
 
@@ -37,6 +41,10 @@ class ItemsController < ApplicationController
     return nil if params[:keyword] == ""
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
+  end
+
+  def item_search
+    @results = @p.result.includes(:tags)
   end
 
   
@@ -90,6 +98,21 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find_by(id: params[:id])
+  end
+
+  def set_search_item
+    @p = Item.ransack(params[:q])
+  end
+
+  def set_item_column
+    @item_name = Item.select("name").distinct
+    @item_description = Item.select("description").distinct
+    @item_price = Item.select("price").distinct
+    @item_days_to_ship = Item.select("days_to_ship_id").distinct
+  end
+
+  def set_tag_column
+    @tag_name = Tag.select("tag_name").distinct
   end
 
 end

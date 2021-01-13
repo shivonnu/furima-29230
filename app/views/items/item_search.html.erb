@@ -1,0 +1,37 @@
+<%= render "shared/second-header"%>
+ 
+<div class='transaction-contents'>
+  <div class='transaction-main'>
+    <h1 class='transaction-title-text'>
+      検索結果
+    </h1>
+
+    <% if @results.length !=0 %>
+      <% @results.each do |result| %>
+        <td>
+        <br>
+        <li>
+          <%= result.name %>
+          <%= result.description %>
+          <%= result.category.name %>
+          <%= result.status.name %>
+          <%= result.price %>
+          <%= result.shipping_area.name %>
+          <%= result.shipping_fee_burden.name %>
+          <%= result.days_to_ship.name %>
+        
+        </li>
+      <% end %>
+    <% else %>
+      該当する商品はありません
+    <% end %>
+    <br>
+
+     <div class='form-group'>
+      <%=link_to 'トップへもどる', root_path, class:"back-btn" %>
+    </div>
+    
+  </div>
+</div>
+
+<%= render "shared/second-footer"%>

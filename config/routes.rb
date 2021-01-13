@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update, :edit]
   resources :cards, only: [:new, :create]
   root to: "items#index"
+  get 'items_item_search', to: 'items#item_search'
 
   end
