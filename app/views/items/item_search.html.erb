@@ -1,6 +1,7 @@
 <%= render "shared/second-header"%>
  
 <div class='transaction-contents'>
+<% breadcrumb :items_item_search %>
   <div class='transaction-main'>
     <h1 class='transaction-title-text'>
       検索結果
@@ -28,7 +29,7 @@
     <br>
 
      <div class='form-group'>
-      <%=link_to 'トップへもどる', root_path, class:"back-btn" %>
+      <%=link_to '戻る', root_path, class:"back-btn" %>
     </div>
     
   </div>

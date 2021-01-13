@@ -1,5 +1,6 @@
 <%= render "shared/header" %>
 <div class='main'>
+<% breadcrumb :root %>
 <div class='select-reason-contents'>
 <ul class='lists-left'>
     <%= search_form_for @p, url: items_item_search_path do |f| %>
