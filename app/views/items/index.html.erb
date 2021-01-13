@@ -1,5 +1,38 @@
 <%= render "shared/header" %>
 <div class='main'>
+<div class='select-reason-contents'>
+<ul class='lists-left'>
+    <%= search_form_for @p, url: items_item_search_path do |f| %>
+    <li><%= f.label :name_eq, '商品名', class:"category-list"%>
+        <%= f.collection_select :name_eq, @item_name, :name, :name,  include_blank: '指定なし', class:"category-list" %></li>
+   
+    <li><%= f.label :description_eq, 'コメント', class:"category-list" %>
+        <%= f.collection_select :description_eq, @item_description, :description, :description,  include_blank: '指定なし', class:"category-list" %></li>
+    
+    <li><%= f.label :category_id_eq, 'カテゴリー', class:"category-list" %>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name,  include_blank: '指定なし', class:"category-list" %></li>
+    
+    <li><%= f.label :status_id_eq, '状態', class:"category-list" %>
+        <%= f.collection_select :status_id_eq, Status.all, :id, :name,  include_blank: '指定なし', class:"category-list" %></li>
+   
+    <li><%= f.label :price_eq, '値段', class:"category-list" %>
+        <%= f.collection_select :price_eq, @item_price, :price, :price,  include_blank: '指定なし', class:"category-list" %></li>
+ 
+    <li><%= f.label :shipping_area_id_eq, '都道府県', class:"category-list" %>
+        <%= f.collection_select :shipping_area_id_eq, ShippingArea.all, :id, :name,  include_blank: '指定なし', class:"category-list" %></li>
+ 
+    <li><%= f.label :shipping_fee_burden_id_eq, '送料', class:"category-list" %>
+        <%= f.collection_select :shipping_fee_burden_id_eq, ShippingFeeBurden.all, :id, :name,  include_blank: '指定なし', class:"category-list" %></li>
+ 
+    <li><%= f.label :days_to_ship_id_eq, '配送日数', class:"category-list" %>
+        <%= f.collection_select :days_to_ship_id_eq, DaysToShip.all, :id, :name,  include_blank: '指定なし', class:"category-list" %></li>
+
+    <li><%= f.submit '検索',class:"back-btn" %></li>
+    <% end %>
+    </ul>
+    </div>
+</div>
+<div class='main'>
 
   <div class='title-contents'>
     <h2 class='service-title'>

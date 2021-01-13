@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   def index
     @item_all = Item.all
     set_item_column
-    set_tag_column
     @items = Item.includes(:user).all.order("created_at DESC")   
   end
 
@@ -15,6 +14,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item_all = Item.all
+    set_item_column
     @tag = ItemTag.includes(:tag).where(item_id: @item.id)
     @message = MessageItemMessageAddress.new
     @messages = ItemMessage.includes(:message).where(item_id: @item.id)
@@ -23,7 +24,6 @@ class ItemsController < ApplicationController
   def new_tags
     @item = Item.find_by(id: params[:id])
     @item_tag_include = ItemTagInclude.new
-
   end
 
   def create
@@ -108,11 +108,6 @@ class ItemsController < ApplicationController
     @item_name = Item.select("name").distinct
     @item_description = Item.select("description").distinct
     @item_price = Item.select("price").distinct
-    @item_days_to_ship = Item.select("days_to_ship_id").distinct
-  end
-
-  def set_tag_column
-    @tag_name = Tag.select("tag_name").distinct
   end
 
 end
