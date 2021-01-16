@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
 
   def show
     @item_all = Item.all
-    set_item_column
     @tag = ItemTag.includes(:tag).where(item_id: @item.id)
     @message = MessageItemMessageAddress.new
     @messages = ItemMessage.includes(:message).where(item_id: @item.id)

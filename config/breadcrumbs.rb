@@ -7,10 +7,10 @@ crumb :new_item do
   parent :root
 end
 
-crumb :item do
-  link "商品詳細", item_path
-  parent :root
-end
+# crumb :item do
+#   link "商品詳細", item_path
+#   parent :root
+# end
 
 crumb :edit_item do
   link "商品編集", edit_item_path
@@ -68,10 +68,10 @@ crumb :item_purchases do
   parent :new_item_purchase
 end
 
-crumb :new_item_purchase do
-  link "購入内容確認", new_item_purchase_path
-  parent :item
-end
+# crumb :new_item_purchase do
+#   link "購入内容確認", new_item_purchase_path
+#   parent :item
+# end
 
 
 # crumb :projects do

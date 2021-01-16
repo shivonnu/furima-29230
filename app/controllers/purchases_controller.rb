@@ -12,6 +12,7 @@ class PurchasesController < ApplicationController
  end
 
   def create
+    
      @user = User.find_by(id: current_user.id)
      @purchase = Purchase.new(user_id: current_user.id, item_id: @item.id)
      redirect_to new_card_path and return unless current_user.card.present?
