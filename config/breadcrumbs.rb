@@ -38,15 +38,15 @@ crumb :addresses_registration do
   parent :new_user_registration
 end
 
-crumb :edit_user_registration do
-  link "登録情報編集", edit_user_registration_path
-  parent :user
-end
+# crumb :edit_user_registration do
+#   link "登録情報編集", edit_user_registration_path
+#   parent :user
+# end
 
-crumb :edit_addresses do
-  link "登録住所編集", edit_addresses_path
-  parent :user
-end
+# crumb :edit_addresses do
+#   link "登録住所編集", edit_addresses_path
+#   parent :user
+# end
 
 crumb :new_user_registration do
   link "ログイン", new_user_session_path
@@ -63,10 +63,10 @@ crumb :new_card do
   parent :root
 end
 
-crumb :item_purchases do
-  link "購入完了", item_purchases_path
-  parent :new_item_purchase
-end
+# crumb :item_purchases do
+#   link "購入完了", item_purchases_path
+#   parent :new_item_purchase
+# end
 
 # crumb :new_item_purchase do
 #   link "購入内容確認", new_item_purchase_path
